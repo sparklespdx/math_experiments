@@ -1,6 +1,6 @@
 fn main() {
 
-    let foo = is_prime(7867);
+    let foo = is_prime(7861);
 
     if foo {
         println!("foo is prime");
@@ -10,6 +10,7 @@ fn main() {
 }
 
 fn is_prime(n: u32) -> bool {
+
     match n {
         0 => return false, // zero is not prime
         1 => return false, // one is also not prime
@@ -19,6 +20,7 @@ fn is_prime(n: u32) -> bool {
 
     // all even numbers except 2 are not prime
     if n % 2 == 0 {
+        println!("even number, bailed early");
         return false;
     } else {
         // compute up to sqrt(n) rounded down, from 3.
@@ -27,9 +29,11 @@ fn is_prime(n: u32) -> bool {
 
         for i in 3..sqrt_n {
             if n % i == 0 {
+                println!("searched up to {i}");
                 return false;
             }
         }
+        println!("PRIME: searched up to {sqrt_n}");
         return true;
     }
 }
