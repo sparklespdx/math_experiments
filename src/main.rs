@@ -21,7 +21,8 @@ fn is_prime(n: u32) -> bool {
     if n % 2 == 0 {
         return false;
     } else {
-        // compute up to sqrt(n) rounded down
+        // compute up to sqrt(n) rounded down, from 3.
+        // should we go down from sqrt(n) instead?
         let sqrt_n = n.isqrt();
 
         for i in 3..sqrt_n {
