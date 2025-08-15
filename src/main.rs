@@ -13,7 +13,7 @@ fn is_prime(n: u32) -> bool {
     match n {
         0 => return false, // zero is not prime
         1 => return false, // one is also not prime
-        2 => return true, // two is the first prime and is always prime
+        2 => return true, // two is the first prime
         _ => {},
     }
 
