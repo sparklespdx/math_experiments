@@ -27,7 +27,10 @@ fn is_prime(n: u32) -> bool {
         // should we go down from sqrt(n) instead?
         let sqrt_n = n.isqrt();
 
-        for i in 3..sqrt_n {
+        // we only need to test odd numbers in the search space,
+        // so we can cut our time in half per number by adjusting
+        // the step of the iterator.
+        for i in (3..sqrt_n).step_by(2) {
             if n % i == 0 {
                 println!("searched up to {i}");
                 return false;
