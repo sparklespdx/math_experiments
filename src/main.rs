@@ -1,13 +1,13 @@
 fn main() {
 
-    let n = 7901;
-    let foo = is_prime(n);
+    // let n = 7901;
+    // let foo = is_prime(n);
 
-    if foo {
-        println!("{n} is prime");
-    } else {
-        println!("{n} is not prime");
-    }
+    // if foo {
+    //     println!("{n} is prime");
+    // } else {
+    //     println!("{n} is not prime");
+    // }
 
     let n = 7727;
     let foo = is_prime_wheel(n);
@@ -68,13 +68,15 @@ fn is_prime_wheel(n: u32) -> bool {
         // test all remaining known valid factors up to sqrt(n)
         let sqrt_n = n.isqrt();
 
-        // I need to also skip multiples of 3 and 5 but
-        // I haven't figured it out yet.
-        for i in (7..sqrt_n).step_by(2) {
-            if n % i == 0 {
-                return false;
+        for i in (7..=sqrt_n).step_by(2) {
+            if i % 3 != 0 || i % 5 != 0 {
+                println!("testing {i} as a factor");
+                if n % i == 0 {
+                    return false
+                }
             }
         }
+
         return true;
     }
 }
