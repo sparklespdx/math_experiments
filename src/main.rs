@@ -9,13 +9,20 @@ fn main() {
     //     println!("{n} is not prime");
     // }
 
-    let n = 3;
-    let foo = is_prime_wheel(n);
+    println!("starting test.....");
 
-    if foo {
-        println!("{n} is prime");
-    } else {
-        println!("{n} is not prime");
+    for n in 0..100 {
+
+        println!(">> testing {n}");
+
+        let foo = is_prime_wheel(n);
+
+        if foo {
+            println!("**** {n} is prime *****");
+        } else {
+            println!("^^^^ {n} is not prime");
+        }
+
     }
 }
 
@@ -57,21 +64,23 @@ fn is_prime_wheel(n: u32) -> bool {
         0 => return false, // zero is not prime
         1 => return false, // one is also not prime
         2 => return true, // two is the first prime
+        3 => return true, // three is also prime and not covered below
         _ => {},
     }
 
     // wheel factorization: all primes are 6k±1, this excludes
     // all multiples of 3 and 5.
     if n % 6 != 1 && n % 6 != 5 {
+        println!(">>>> - number is not 6k±1, early bail");
         return false;
     } else {
         // test all remaining known valid factors up to sqrt(n)
-        println!("testing {n}");
+        println!(">>>> - testing up to sqrt({n})");
         let sqrt_n = n.isqrt();
 
         for i in (7..=sqrt_n).step_by(2) {
             if i % 3 != 0 && i % 5 != 0 {
-                println!("testing {i} as a factor");
+                println!(">>>> ---- testing {i} as a factor");
                 if n % i == 0 {
                     return false
                 }
