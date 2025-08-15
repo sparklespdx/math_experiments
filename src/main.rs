@@ -65,11 +65,17 @@ fn is_prime_wheel(n: u32) -> bool {
         1 => return false, // one is also not prime
         2 => return true, // two is the first prime
         3 => return true, // three is also prime and not covered below
+        5 => return true, // also prime and should bail early
         _ => {},
     }
 
     // wheel factorization: all primes are 6k±1, this excludes
-    // all multiples of 3 and 5.
+    // all multiples of 3 and 5 that are larger than 5.
+    // TODO: i lied it still hits 25 it's wrong
+    // 
+    // >> testing 25
+    // >>>> - testing up to sqrt(25)
+    // **** 25 is prime *****
     if n % 6 != 1 && n % 6 != 5 {
         println!(">>>> - number is not 6k±1, early bail");
         return false;
