@@ -1,6 +1,6 @@
 fn main() {
 
-    let foo = is_prime(7861);
+    let foo = is_prime(12087131); // this is divisible by 7 lmao
 
     if foo {
         println!("foo is prime");
