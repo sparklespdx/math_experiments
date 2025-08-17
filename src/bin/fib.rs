@@ -3,6 +3,7 @@ fn main() {
     println!("result is {thing}");
 }
 
+// iterative implementation using simple loop
 fn fib(n: u64) -> u64 {
 
     if n <= 1 {return n;}
@@ -24,6 +25,8 @@ fn fib(n: u64) -> u64 {
 
 }
 
+// recursive implementation
+// I think it's really interesting how when you map this out by hand, it looks like a tree.
 fn fib_r(n: u64) -> u64 {
     match n {
         0 => n,
